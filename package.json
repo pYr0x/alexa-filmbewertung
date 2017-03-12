@@ -1,0 +1,27 @@
+{
+  "name": "alexa-imdb",
+  "version": "1.0.0",
+  "description": "A IMDB Alexa Skill",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test",
+    "create-schema": "node resources/schema.js",
+    "utterances": "node resources/utterances.js"
+  },
+  "keywords": [
+    "alexa",
+    "imdb"
+  ],
+  "author": "Julian Kern",
+  "license": "ISC",
+  "dependencies": {
+    "alexa-app": "^3.2.0",
+    "scrape-it": "^3.3.0",
+    "lodash": "^4.17.4",
+    "unirest": "^0.5.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}
