@@ -5,7 +5,6 @@ const Movie = require('../Movie');
 
 class ImdbAdvancedScrapper {
   static get url() {
-    // return "http://www.imdb.com/search/title";
     return "http://www.alva-boden.de/proxy/imdb-advanced.php";
   }
 
@@ -20,7 +19,7 @@ class ImdbAdvancedScrapper {
     let self = this;
 
     this.promise = new Promise((resolve, reject) => {
-      scrapeIt(ImdbAdvancedScrapper.url + "?count=" + this.count + "&title_type=feature,tv_movie&title=" + this.title, {
+      scrapeIt(ImdbAdvancedScrapper.url + "?api_key="+ process.env.api_key +"&count=" + this.count + "&title_type=feature,tv_movie&title=" + this.title, {
         movies: {
           listItem: "div.lister-list .lister-item",
           name: "movie",

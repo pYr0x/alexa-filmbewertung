@@ -5,7 +5,6 @@ const Movie = require('../Movie');
 
 class ImdbScrapper {
   static get url() {
-    // return "http://www.imdb.com/find";
     return "http://www.alva-boden.de/proxy/imdb.php";
   }
 
@@ -20,7 +19,7 @@ class ImdbScrapper {
     let self = this;
 
     this.promise = new Promise((resolve, reject) => {
-      scrapeIt(ImdbScrapper.url + "?s=tt&ttype=ft&q=" + this.title, {
+      scrapeIt(ImdbScrapper.url + "?api_key="+ process.env.api_key +"&s=tt&ttype=ft&q=" + this.title, {
         movies: {
           listItem: "table.findList tr",
           name: "movie",

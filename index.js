@@ -1,6 +1,6 @@
 "use strict";
 
-var Alexa = require('alexa-app');
+const Alexa = require('alexa-app');
 
 const CONST = require('./src/const');
 const ImdbMenu = require('./src/ImdbMenu');
@@ -13,8 +13,7 @@ const OMDB = require("./src/provider/Omdb");
 
 const SayMovie = require('./src/SayMovie');
 
-var app = new Alexa.app("imdb");
-const IMDB_SESSION_KEY = "imdb_";
+const app = new Alexa.app("imdb");
 
 // connect the alexa-app to AWS Lambda
 module.exports = app;
@@ -137,15 +136,15 @@ app.intent("SearchIntent", {
         });
 
         // save some data into the current session
-        session.set(IMDB_SESSION_KEY+"movies", movieSession);
-        session.set(IMDB_SESSION_KEY+"searchedFor", {
+        session.set(CONST.IMDB_SESSION_KEY+"movies", movieSession);
+        session.set(CONST.IMDB_SESSION_KEY+"searchedFor", {
           'movie': searchedForMovie,
           'year': searchedForYear
         });
       }
 
       // save menu data session
-      session.set(IMDB_SESSION_KEY+"menu", imdbMenu.getData());
+      session.set(CONST.IMDB_SESSION_KEY+"menu", imdbMenu.getData());
     }).catch((err) => {
 
     });
@@ -165,7 +164,7 @@ app.intent("ChooseIntent", {
 
   const enumeration = request.slot("ENUMERATION");
 
-  let moviesSession = request.getSession().get(IMDB_SESSION_KEY+"movies");
+  let moviesSession = request.getSession().get(CONST.IMDB_SESSION_KEY+"movies");
 
   if(moviesSession && moviesSession.length > 0){
     // response.say("Du hast "+enumeration+" gemeint?");
@@ -217,7 +216,7 @@ app.intent("RepeatIntent", {
   const imdbMenu = imdbMenuFactory(request);
   const sayMovie = new SayMovie(request, response, imdbMenu);
 
-  let moviesSession = request.getSession().get(IMDB_SESSION_KEY+"movies");
+  let moviesSession = request.getSession().get(CONST.IMDB_SESSION_KEY+"movies");
 
   if(moviesSession && moviesSession.length > 0){
     sayMovie.list(moviesSession);
