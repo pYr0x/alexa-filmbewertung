@@ -167,16 +167,6 @@ app.intent("ChooseIntent", {
 
   let moviesSession = request.getSession().get(IMDB_SESSION_KEY+"movies");
 
-
-  // const sayRating = function (movie) {
-  //   response.say("Der Film: " + movie.title + ", hat " + movie.rating + " von 10 Sterne");
-  //   response.shouldEndSession(false);
-  //
-  //   imdbMenu.inMenue('movieRating');
-  //   response.response.MENU_TEST = imdbMenu.getCurrentMenu();
-  //   response.shouldEndSession(true);
-  // };
-
   if(moviesSession && moviesSession.length > 0){
     // response.say("Du hast "+enumeration+" gemeint?");
 
@@ -207,6 +197,8 @@ app.intent("ChooseIntent", {
         break;
 
       default:
+        response.say(ImdbMenu.menues[imdbMenu.getCurrentMenu()]);
+        response.shouldEndSession(false);
         break;
     }
   }else{
