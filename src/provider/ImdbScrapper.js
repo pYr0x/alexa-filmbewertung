@@ -3,8 +3,6 @@
 const scrapeIt = require("scrape-it");
 const Movie = require('../Movie');
 
-var iconv = require('iconv-lite');
-
 class ImdbScrapper {
   static get url() {
     // return "http://www.imdb.com/find";
