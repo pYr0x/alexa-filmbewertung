@@ -15,3 +15,6 @@ Um Alexa eine genauere Suche zu ermöglichen gib das Erscheinungsjahr mit an. Sa
 Alexa gibt dir nun aus der Triologie gleich den richtigen Film und dessen Bewertung.
 
 Weißt du mal nicht weiter, sage einfach "Hilfe" und Alexa gibt dir Hinweise wie du fortfahren kannst.
+
+---
+[Apache License 2.0](LICENSE)

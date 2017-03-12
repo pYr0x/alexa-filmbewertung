@@ -5,7 +5,7 @@ var ImdbAdvancedScrapper = require('../src/provider/ImdbAdvancedScrapper');
 
 describe('ImdbAdvancedScrapper', () => {
   it('should reject if no movie found', (done) => {
-    const imdbs = new ImdbAdvancedScrapper('ÄÖÜ');
+    const imdbs = new ImdbAdvancedScrapper('_');
     imdbs.findMovie().then().catch((reason) => {
       assert(reason, 'movie not found');
       done();
