@@ -10,7 +10,7 @@ const GERMAN_ENUMERATION = [
   'fünfter'
 ];
 
-class ImdbMenu {
+class Menu {
 
   static get menues(){
     return {
@@ -67,4 +67,4 @@ class ImdbMenu {
 
 }
 
-module.exports = ImdbMenu;
+module.exports = Menu;
