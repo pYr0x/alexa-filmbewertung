@@ -16,7 +16,7 @@ describe("Alexa", function() {
 
     it('should launch', function (done) {
       app.request(requestTemplate.launch).then(function (response) {
-        assert.equal(response.response.outputSpeech.ssml, '<speak>Nenne mir einen Film und ich sage dir seine Bewertung auf I.M.D.B.</speak>');
+        assert.equal(response.response.outputSpeech.ssml, '<speak>Nenne mir einen Film und ich sage dir seine Bewertung.</speak>');
         assert.equal(response.response.reprompt.outputSpeech.ssml, '<speak>Ich hab leider nichts gehört. Nenne mir einen Film.</speak>');
         assert.isFalse(response.response.shouldEndSession);
         done();

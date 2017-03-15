@@ -15,7 +15,7 @@ class ImdbMenu {
   static get menues(){
     return {
       "main": {
-        "help": "Nenne mir einen Film und ich sage dir seine Bewertung. Sage zum Beispiel: Wie wurde matrix bewertet. Du kannst auch präzisere Fragen stellen. Zum Beispiel: Wie wurde Pulp Fiction aus dem Jahr 1994 bewertet. Du kannst jederzeit Abbrechen, Stop oder Exit sagen."
+        "help": "Nenne mir einen Film und ich sage dir seine Bewertung. Sage zum Beispiel: Wie wurde Matrix bewertet. Du kannst auch präzisere Fragen stellen. Zum Beispiel: Wie wurde Pulp Fiction aus dem Jahr 1994 bewertet. Du kannst jederzeit Abbrechen, Stop oder Exit sagen."
       },
       "movieRating": {
         "help": ""

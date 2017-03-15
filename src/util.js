@@ -6,8 +6,8 @@ exports.getRandomInt = function(min, max) {
 };
 
 
-exports.imdbMenuFactory = function(request) {
-  const ImdbMenu = require('./ImdbMenu');
+exports.menuFactory = function(request) {
+  const ImdbMenu = require('./Menu');
   const CONST = require('./const');
 
   let session = request.getSession().get(CONST.IMDB_SESSION_KEY+"menu");

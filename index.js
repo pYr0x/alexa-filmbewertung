@@ -3,8 +3,8 @@
 const Alexa = require('alexa-app');
 
 const CONST = require('./src/const');
-const ImdbMenu = require('./src/ImdbMenu');
-const imdbMenuFactory = require('./src/util').imdbMenuFactory;
+const Menu = require('./src/Menu');
+const menuFactory = require('./src/util').menuFactory;
 
 const Movie = require("./src/Movie");
 const ImdbAdvancedScrapper = require("./src/provider/ImdbAdvancedScrapper");
@@ -13,13 +13,13 @@ const OMDB = require("./src/provider/Omdb");
 
 const SayMovie = require('./src/SayMovie');
 
-const app = new Alexa.app("imdb");
+const app = new Alexa.app("filmbewertung");
 
 // connect the alexa-app to AWS Lambda
 module.exports = app;
 
 app.launch(function(request, response) {
-	const prompt = 'Nenne mir einen Film und ich sage dir seine Bewertung auf I.M.D.B.';
+	const prompt = 'Nenne mir einen Film und ich sage dir seine Bewertung.';
 	response.say(prompt);
   response.reprompt("Ich hab leider nichts gehört. Nenne mir einen Film.");
   response.shouldEndSession(false);
@@ -32,11 +32,11 @@ app.intent('AMAZON.StopIntent', {}, cancelIntentFunction);
 // app.intent('AMAZON.YesIntent', {}, cancelIntentFunction);
 
 app.intent('AMAZON.HelpIntent', {}, function(request, response) {
-    const imdbMenu = imdbMenuFactory(request);
-		const help = ImdbMenu.menues[imdbMenu.getCurrentMenu()].help;
+    const menu = menuFactory(request);
+		const help = Menu.menues[menu.getCurrentMenu()].help;
     response.say(help).shouldEndSession(false);
 
-    response.response.MENU_TEST = imdbMenu.getCurrentMenu();
+    response.response.MENU_TEST = menu.getCurrentMenu();
   });
 
 app.intent("SearchIntent", {
@@ -47,17 +47,19 @@ app.intent("SearchIntent", {
 		"utterances": [
 			"welche Bewertung {-|MOVIE} hat",
 			"welche Bewertung {-|MOVIE} {von|aus dem Jahr} {-|YEAR} hat",
-			"{|welche Bewertung hat} {-|MOVIE} {von|aus dem Jahr} {-|YEAR}",
+			"{welche Bewertung hat} {-|MOVIE} {von|aus dem Jahr} {-|YEAR}",
 			"wie wurde {-|MOVIE} bewertet",
 			"wie wurde {-|MOVIE} {von|aus dem Jahr} {-|YEAR} bewertet",
 			"wie {-|MOVIE} bewertet wurde",
 			"wie {-|MOVIE} {von|aus dem Jahr} {-|YEAR} bewertet wurde",
+      "nach {|dem Film} {-|MOVIE}",
+      "nach {|dem Film} {-|MOVIE} {|von|aus dem Jahr} {-|YEAR}",
       "{-|MOVIE}",
       "{-|MOVIE} {von|aus dem Jahr} {-|YEAR}"
 		]
 	},	function(request, response) {
-		const imdbMenu = imdbMenuFactory(request);
-		const sayMovie = new SayMovie(request, response, imdbMenu);
+		const menu = menuFactory(request);
+		const sayMovie = new SayMovie(request, response, menu);
 
     let session = request.getSession();
 
@@ -144,7 +146,7 @@ app.intent("SearchIntent", {
       }
 
       // save menu data session
-      session.set(CONST.IMDB_SESSION_KEY+"menu", imdbMenu.getData());
+      session.set(CONST.IMDB_SESSION_KEY+"menu", menu.getData());
     }).catch((err) => {
 
     });
@@ -159,8 +161,8 @@ app.intent("ChooseIntent", {
 	  "{-|ENUMERATION} {|Titel|Film}",
   ]
 }, function (request, response) {
-  const imdbMenu = imdbMenuFactory(request);
-  const sayMovie = new SayMovie(request, response, imdbMenu);
+  const menu = menuFactory(request);
+  const sayMovie = new SayMovie(request, response, menu);
 
   const enumeration = request.slot("ENUMERATION");
 
@@ -171,37 +173,42 @@ app.intent("ChooseIntent", {
 
     switch(enumeration){
       case "erster":
+      case "erstens":
       case "eins":
         sayMovie.rating(new Movie(moviesSession[0]));
         break;
 
       case "zweiter":
+      case "zweitens":
       case "zwei":
         sayMovie.rating(new Movie(moviesSession[1]));
         break;
 
       case "dritter":
+      case "drittens":
       case "drei":
         sayMovie.rating(new Movie(moviesSession[2]));
         break;
 
       case "vieter":
+      case "viertens":
       case "vier":
         sayMovie.rating(new Movie(moviesSession[3]));
         break;
 
       case "fünfter":
+      case "fünftens":
       case "fünf":
         sayMovie.rating(new Movie(moviesSession[4]));
         break;
 
       default:
-        response.say(ImdbMenu.menues[imdbMenu.getCurrentMenu()]);
+        response.say(Menu.menues[menu.getCurrentMenu()]);
         response.shouldEndSession(false);
         break;
     }
   }else{
-  	response.say("Nenne mir einen Film und ich sage dir seine Bewertung auf I.M.D.B.");
+  	response.say("Nenne mir einen Film und ich sage dir seine Bewertung.");
     response.shouldEndSession(true);
   }
 
@@ -213,26 +220,26 @@ app.intent("RepeatIntent", {
 	  "{nochmal|nochmals}"
   ]
 }, function (request, response) {
-  const imdbMenu = imdbMenuFactory(request);
-  const sayMovie = new SayMovie(request, response, imdbMenu);
+  const menu = menuFactory(request);
+  const sayMovie = new SayMovie(request, response, menu);
 
   let moviesSession = request.getSession().get(CONST.IMDB_SESSION_KEY+"movies");
 
   if(moviesSession && moviesSession.length > 0){
     sayMovie.list(moviesSession);
   }else{
-    response.say("Nenne mir einen Film und ich sage dir seine Bewertung auf I.M.D.B.");
+    response.say("Nenne mir einen Film und ich sage dir seine Bewertung.");
     response.shouldEndSession(true);
   }
 });
 
-app.intent("BackIntent", {
-  "utterances": [
-    "Zurück",
-  ]
-}, function () {
-
-});
+// app.intent("BackIntent", {
+//   "utterances": [
+//     "Zurück",
+//   ]
+// }, function () {
+//
+// });
 
 
 function cancelIntentFunction(request, response) {
