@@ -248,6 +248,68 @@ template.searchXXX = {
   "version": "1.0"
 };
 
+template.repeat = {
+  "session": {
+    "sessionId": "SessionId.a6ddf1d4-3759-4d82-8a62-39b02032dbd6",
+    "application": {
+      "applicationId": "amzn1.ask.skill.81ad5dfb-a077-4bc7-a4ae-85820ebb8a1b"
+    },
+    "attributes": {
+      "imdb_movies": [
+        "{\"Response\":\"true\",\"Title\":\"Der Herr der Ringe - Die Gefährten\",\"Year\":\"2001\",\"Id\":\"tt0120737\",\"imdbRating\":\"8.8\"}",
+        "{\"Response\":\"true\",\"Title\":\"Der Herr der Ringe - Die Rückkehr des Königs\",\"Year\":\"2003\",\"Id\":\"tt0167260\",\"imdbRating\":\"8.9\"}",
+        "{\"Response\":\"true\",\"Title\":\"Der Herr der Ringe - Die zwei Türme\",\"Year\":\"2002\",\"Id\":\"tt0167261\",\"imdbRating\":\"8.7\"}",
+        "{\"Response\":\"true\",\"Title\":\"Ellery Queen and the Murder Ring\",\"Year\":\"1941\",\"Id\":\"tt0033572\",\"imdbRating\":\"6.2\"}"
+      ]
+    },
+    "user": {
+      "userId": "amzn1.ask.account.AE5B4PL24QQDV7CKJZOQXPEWO7AF7TFYHCVR2LU5TFYLAIJFNNCM32OVNGO5ZZA4QDG7XI2TTMG2E5KDNYYRWSSNYNFRUJECXRYJRJSEP4SCTKY37HG7Z34LTLLBVD5XXYVQYQDIJJFSSLCLR3Y66LKOMQIJEZWLUUHDANWPGN3IXQHDQKOCE47XY7TTNA6AELHZWPSKV2IW56I"
+    },
+    "new": true
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": "EdwRequestId.6e9b83c1-478c-476d-bfb8-c7a19f15fe0a",
+    "locale": "de-DE",
+    "timestamp": "2017-03-22T22:08:35Z",
+    "intent": {
+      "name": "RepeatIntent",
+      "slots": { }
+    }
+  },
+  "version": "1.0"
+};
+
+template.searchLalaLand = {
+  "session": {
+    "sessionId": "SessionId.9d5aa58d-6d72-4067-abc8-861bba9c5805",
+    "application": {
+      "applicationId": "amzn1.ask.skill.81ad5dfb-a077-4bc7-a4ae-85820ebb8a1b"
+    },
+    "attributes": {},
+    "user": {
+      "userId": "amzn1.ask.account.AE5B4PL24QQDV7CKJZOQXPEWO7AF7TFYHCVR2LU5TFYLAIJFNNCM32OVNGO5ZZA4QDG7XI2TTMG2E5KDNYYRWSSNYNFRUJECXRYJRJSEP4SCTKY37HG7Z34LTLLBVD5XXYVQYQDIJJFSSLCLR3Y66LKOMQIJEZWLUUHDANWPGN3IXQHDQKOCE47XY7TTNA6AELHZWPSKV2IW56I"
+    },
+    "new": true
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": "EdwRequestId.9bc7f946-cce8-4447-b69c-c180f0e8c935",
+    "locale": "de-DE",
+    "timestamp": "2017-03-22T23:02:32Z",
+    "intent": {
+      "name": "SearchIntent",
+      "slots": {
+        "MOVIE": {
+          "name": "MOVIE",
+          "value": "la la land"
+        }
+      }
+    }
+  },
+  "version": "1.0"
+};
+
 template.help = {
   "session": {
     "sessionId": "SessionId.73039e6a-f69e-438d-9d1e-6f7bfa954e49",

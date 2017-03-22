@@ -226,21 +226,16 @@ app.intent("RepeatIntent", {
   let moviesSession = request.getSession().get(CONST.IMDB_SESSION_KEY+"movies");
 
   if(moviesSession && moviesSession.length > 0){
-    sayMovie.list(moviesSession);
+    let movieList = [];
+    moviesSession.forEach(function (json) {
+      movieList.push(new Movie(json));
+    });
+    sayMovie.list(movieList);
   }else{
     response.say("Nenne mir einen Film und ich sage dir seine Bewertung.");
     response.shouldEndSession(true);
   }
 });
-
-// app.intent("BackIntent", {
-//   "utterances": [
-//     "Zurück",
-//   ]
-// }, function () {
-//
-// });
-
 
 function cancelIntentFunction(request, response) {
 	response.say('astalavista baby!').shouldEndSession(true);

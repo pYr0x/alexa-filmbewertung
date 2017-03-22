@@ -51,7 +51,8 @@ class ImdbAdvancedScrapper {
 
             // if the year should not have any word character!
             // if year contains any word character do not list in movies!
-            if(!(/[a-z]/.test(movieObj.year))){
+            // and if no realeaseYear was found
+            if(!(/[a-z]/.test(movieObj.year)) && movie.releaseYear !== undefined){
               if(self.year !== undefined){
                 if(parseInt(self.year) === parseInt(movie.releaseYear)){
                   self.movies.push(movie);

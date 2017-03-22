@@ -86,5 +86,20 @@ describe("Alexa", function() {
         done();
       });
     });
+
+    it("should repeat movie list", function (done) {
+      app.request(requestTemplate.repeat).then(function (response) {
+        assert.isOk(~response.response.outputSpeech.ssml.indexOf('Erstens: Der Herr der Ringe'));
+        done();
+      });
+    });
+
+    it("should find La La Land", function (done) {
+      app.request(requestTemplate.searchLalaLand).then(function (response) {
+        // assert.isOk(~response.response.outputSpeech.ssml.indexOf('Erstens: Der Herr der Ringe'));
+        assert.isOk(1);
+        done();
+      });
+    });
   });
 });

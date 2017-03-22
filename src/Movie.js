@@ -54,8 +54,9 @@ class Movie {
 
   set releaseYear(year) {
     let matches = year.match(/\d+/);
-    this.movie.Year = matches[0];
-    // this.movie.Year = year;
+    if(matches !== null && matches.length > 0){
+      this.movie.Year = matches[0];
+    }
   }
 
   get actors() {
