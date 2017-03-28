@@ -209,7 +209,7 @@ app.intent("ChooseIntent", {
     }
   }else{
   	response.say("Nenne mir einen Film und ich sage dir seine Bewertung.");
-    response.shouldEndSession(true);
+    response.shouldEndSession(false);
   }
 
 });
@@ -233,7 +233,7 @@ app.intent("RepeatIntent", {
     sayMovie.list(movieList);
   }else{
     response.say("Nenne mir einen Film und ich sage dir seine Bewertung.");
-    response.shouldEndSession(true);
+    response.shouldEndSession(false);
   }
 });
 

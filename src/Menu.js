@@ -54,8 +54,10 @@ class Menu {
   getCurrentMenu() {
     if(this.history.length === 1){
       return this.history[0].menue;
-    }else{
+    }else if(this.history.length > 1) {
       return this.history[this.history.length-1].menue;
+    }else{
+      return Menu.menues.main;
     }
   }
 
