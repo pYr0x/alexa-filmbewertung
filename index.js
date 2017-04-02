@@ -66,8 +66,8 @@ app.intent("SearchIntent", {
 
 		const searchedForMovie = request.slot("MOVIE");
 		const searchedForYear = request.slot("YEAR");
-		console.log(searchedForMovie);
-		console.log(searchedForYear);
+		console.log("movie: "+searchedForMovie);
+		console.log("year: "+searchedForYear);
 
     let moviePromise = new Promise(function (resolve, reject) {
 
@@ -169,7 +169,7 @@ app.intent("ChooseIntent", {
   let moviesSession = request.getSession().get(CONST.IMDB_SESSION_KEY+"movies");
 
   if(moviesSession && moviesSession.length > 0){
-    // response.say("Du hast "+enumeration+" gemeint?");
+    console.log(enumeration);
 
     switch(enumeration){
       case "erster":

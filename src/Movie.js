@@ -53,9 +53,11 @@ class Movie {
   }
 
   set releaseYear(year) {
-    let matches = year.match(/\d+/);
-    if(matches !== null && matches.length > 0){
-      this.movie.Year = matches[0];
+    if(typeof year !== "undefined" && year) {
+      let matches = year.match(/\d+/);
+      if(matches !== null && matches.length > 0){
+        this.movie.Year = matches[0];
+      }
     }
   }
 

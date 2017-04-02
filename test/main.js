@@ -1,4 +1,5 @@
 "use strict";
+const _ = require("lodash");
 var chai = require("chai");
 var assert = chai.assert;
 
@@ -98,6 +99,19 @@ describe("Alexa", function() {
       app.request(requestTemplate.searchLalaLand).then(function (response) {
         // assert.isOk(~response.response.outputSpeech.ssml.indexOf('Erstens: Der Herr der Ringe'));
         assert.isOk(1);
+        done();
+      });
+    });
+
+    it("should handle AKA movie titles ", function (done) {
+      app.request(requestTemplate.searchZehnGebote).then(function (response) {
+        assert.equal(response.MENU_TEST, 'movieList');
+        response.sessionAttributes.imdb_movies.forEach(function (item) {
+          let movie = JSON.parse(item);
+          if(_.includes(movie, 'The Great Commandment') && _.includes(movie, '1939')){
+            assert.isOk(1);
+          }
+        });
         done();
       });
     });

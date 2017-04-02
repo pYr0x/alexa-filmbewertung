@@ -335,6 +335,38 @@ template.help = {
   "version": "1.0"
 };
 
+template.searchZehnGebote = {
+  "session": {
+    "sessionId": "SessionId.a0bedea9-a466-47e0-81ce-755fbe8a5981",
+    "application": {
+      "applicationId": "amzn1.ask.skill.81ad5dfb-a077-4bc7-a4ae-85820ebb8a1b"
+    },
+    "attributes": {},
+    "user": {
+      "userId": "amzn1.ask.account.AE5B4PL24QQDV7CKJZOQXPEWO7AF7TFYHCVR2LU5TFYLAIJFNNCM32OVNGO5ZZA4QDG7XI2TTMG2E5KDNYYRWSSNYNFRUJECXRYJRJSEP4SCTKY37HG7Z34LTLLBVD5XXYVQYQDIJJFSSLCLR3Y66LKOMQIJEZWLUUHDANWPGN3IXQHDQKOCE47XY7TTNA6AELHZWPSKV2IW56I"
+    },
+    "new": true
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": "EdwRequestId.6f6c122c-a5a5-408e-acc8-6404207c1827",
+    "locale": "de-DE",
+    "timestamp": "2017-04-02T17:52:28Z",
+    "intent": {
+      "name": "SearchIntent",
+      "slots": {
+        "MOVIE": {
+          "name": "MOVIE",
+          "value": "die zehn gebote"
+        },
+        "YEAR": {
+          "name": "YEAR"
+        }
+      }
+    }
+  },
+  "version": "1.0"
+};
 
 
 module.exports = template;

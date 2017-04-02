@@ -32,6 +32,14 @@ class ImdbScrapper {
             year: {
               selector: ".result_text",
               convert: function (text) {
+
+                // find a "aka" title
+                // split it at the characteristic string
+                if(~text.indexOf(') aka')){
+                  let parts = text.split(") aka");
+                  text = parts[0]+')';
+                }
+
                 let matches = text.match(/\((\d+)\)$/);
                 if (matches && matches.length >= 2) {
                   return matches[1];
@@ -59,7 +67,6 @@ class ImdbScrapper {
           movie.releaseYear = movieObj.year;
           let matches = movieObj.href.match(/tt\d+/);
           movie.id = matches[0];
-          // movie.rating = movieObj.rating;
 
           // if the year should not have any word character!
           // if year contains any word character do not list in movies!
