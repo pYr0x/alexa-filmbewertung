@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/pYr0x/alexa-imdb.svg?branch=master)](https://travis-ci.org/pYr0x/alexa-imdb)
+[![Build Status](https://travis-ci.org/pYr0x/alexa-filmbewertung.svg?branch=master)](https://travis-ci.org/pYr0x/alexa-filmbewertung)
 ---
 ## Alexa Filmbewertung Skill
 
