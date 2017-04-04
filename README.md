@@ -3,7 +3,7 @@
 ## Alexa Filmbewertung Skill
 
 
-Ihr seht die Vorschau eines Films im TV oder beim Stöbern im Internet und möchtet gerne wissen ob es sich lohnt diesen Film im Kino anzuschauen oder in bei Amazon auszuleihen.
+Ihr seht die Vorschau eines Films im TV oder beim Stöbern im Internet und möchtet gerne wissen ob es sich lohnt diesen Film im Kino anzuschauen oder ihn bei Amazon auszuleihen.
 Frag doch einfach Alexa nach der Bewertung des Films.
 
 Frage zum Beispiel nach dem Film "Matrix":<br>
@@ -11,6 +11,7 @@ Frage zum Beispiel nach dem Film "Matrix":<br>
 oder<br>
 "Alexa, frage Filmbewertung nach dem Film Matrix."<br>
 Alexa ließt dir eine Liste mit allen 3 Matrix Filmen vor. Entscheide dann welchen Film du gemeint hast.
+Sage zum Beispiel: "Erster Titel" oder auch nur "Erster".
 
 Um Alexa eine genauere Suche zu ermöglichen gib das Erscheinungsjahr mit an. Sage zum Bespiel:
 "Alexa, frage Filmbewertung wie Herr der Ringe aus dem Jahr 2001 bewertet wurde."
@@ -43,9 +44,30 @@ SearchIntent    nach dem Film {MOVIE} aus dem Jahr {YEAR}
 SearchIntent    {MOVIE}
 SearchIntent    {MOVIE} von {YEAR}
 SearchIntent    {MOVIE} aus dem Jahr {YEAR}
+SearchIntent    der Film {MOVIE}
+SearchIntent    den Film {MOVIE}
+SearchIntent    der Titel {MOVIE}
+SearchIntent    den Titel {MOVIE}
+SearchIntent    der Film {MOVIE} von {YEAR}
+SearchIntent    den Film {MOVIE} von {YEAR}
+SearchIntent    der Titel {MOVIE} von {YEAR}
+SearchIntent    den Titel {MOVIE} von {YEAR}
+SearchIntent    der Film {MOVIE} aus dem Jahr {YEAR}
+SearchIntent    den Film {MOVIE} aus dem Jahr {YEAR}
+SearchIntent    der Titel {MOVIE} aus dem Jahr {YEAR}
+SearchIntent    den Titel {MOVIE} aus dem Jahr {YEAR}
 ChooseIntent    {ENUMERATION}
+ChooseIntent    den {ENUMERATION}
 ChooseIntent    {ENUMERATION} Titel
+ChooseIntent    den {ENUMERATION} Titel
 ChooseIntent    {ENUMERATION} Film
+ChooseIntent    den {ENUMERATION} Film
+ChooseIntent    {ENUMERATION} bitte
+ChooseIntent    den {ENUMERATION} bitte
+ChooseIntent    {ENUMERATION} Titel bitte
+ChooseIntent    den {ENUMERATION} Titel bitte
+ChooseIntent    {ENUMERATION} Film bitte
+ChooseIntent    den {ENUMERATION} Film bitte
 RepeatIntent    Wiederhole alle nochmal
 RepeatIntent    Wiederhole die nochmal
 RepeatIntent    Wiederhole alle Titel nochmal
