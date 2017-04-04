@@ -37,7 +37,7 @@ class SayMovie {
       sayList.push(CONST.GERMAN_ENUMERATION[i] + ": "+movies[i].title+", aus dem Jahr "+movies[i].releaseYear);
     }
 
-    this.response.say("Ich habe mehrere Filme mit dem Titel: "+this.searchedForMovie+" gefunden. Welchen Film hast du gemeint? "+sayList.join('. '));
+    this.response.say("Ich habe mehrere Filme mit dem Titel: "+this.searchedForMovie+" gefunden. Welchen Film hast du gemeint? "+sayList.join('. ')+". Sage zum Beispiel: Erster Titel.");
     this.response.reprompt("Ich hab leider nichts gehört. Sage zum Beispiel: Erster Titel.");
 
     this.response.shouldEndSession(false);

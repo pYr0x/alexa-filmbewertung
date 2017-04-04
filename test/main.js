@@ -115,5 +115,12 @@ describe("Alexa", function() {
         done();
       });
     });
+
+    it("should find der Pate", function (done) {
+      app.request(requestTemplate.searchDerPate).then(function (response) {
+        assert.equal(response.MENU_TEST, 'movieList');
+        done();
+      });
+    });
   });
 });

@@ -62,7 +62,11 @@ class ImdbAdvancedScrapper {
               }
             }
           });
-          resolve(self.movies);
+          if(Array.isArray(self.movies) && self.movies.length > 0){
+            resolve(self.movies);
+          }else{
+            reject('movie not found');
+          }
         }
       });
         // .catch(function (err) {

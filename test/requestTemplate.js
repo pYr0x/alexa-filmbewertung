@@ -368,5 +368,38 @@ template.searchZehnGebote = {
   "version": "1.0"
 };
 
+template.searchDerPate = {
+  "session": {
+    "sessionId": "SessionId.2b9b58d4-bc72-4aed-82cb-300452ece1aa",
+    "application": {
+      "applicationId": "amzn1.ask.skill.81ad5dfb-a077-4bc7-a4ae-85820ebb8a1b"
+    },
+    "attributes": {},
+    "user": {
+      "userId": "amzn1.ask.account.AE5B4PL24QQDV7CKJZOQXPEWO7AF7TFYHCVR2LU5TFYLAIJFNNCM32OVNGO5ZZA4QDG7XI2TTMG2E5KDNYYRWSSNYNFRUJECXRYJRJSEP4SCTKY37HG7Z34LTLLBVD5XXYVQYQDIJJFSSLCLR3Y66LKOMQIJEZWLUUHDANWPGN3IXQHDQKOCE47XY7TTNA6AELHZWPSKV2IW56I"
+    },
+    "new": true
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": "EdwRequestId.53ed19cf-d0ed-4b24-88a1-f61aa9ff6bfb",
+    "locale": "de-DE",
+    "timestamp": "2017-04-04T20:34:05Z",
+    "intent": {
+      "name": "SearchIntent",
+      "slots": {
+        "MOVIE": {
+          "name": "MOVIE",
+          "value": "der pate"
+        },
+        "YEAR": {
+          "name": "YEAR"
+        }
+      }
+    }
+  },
+  "version": "1.0"
+};
+
 
 module.exports = template;

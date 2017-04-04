@@ -1,6 +1,6 @@
 {
   "name": "alexa-filmbewertung",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A Alexa Movie Rating Skill",
   "main": "index.js",
   "scripts": {

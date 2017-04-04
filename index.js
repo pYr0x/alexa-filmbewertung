@@ -55,7 +55,9 @@ app.intent("SearchIntent", {
       "nach {|dem Film} {-|MOVIE}",
       "nach {|dem Film} {-|MOVIE} {|von|aus dem Jahr} {-|YEAR}",
       "{-|MOVIE}",
-      "{-|MOVIE} {von|aus dem Jahr} {-|YEAR}"
+      "{-|MOVIE} {von|aus dem Jahr} {-|YEAR}",
+      "{der|den} {Film|Titel} {-|MOVIE}",
+      "{der|den} {Film|Titel} {-|MOVIE} {von|aus dem Jahr} {-|YEAR}"
 		]
 	},	function(request, response) {
 		const menu = menuFactory(request);
@@ -158,7 +160,7 @@ app.intent("ChooseIntent", {
     "ENUMERATION": "ENUMERATION"
   },
   "utterances": [
-	  "{-|ENUMERATION} {|Titel|Film}",
+	  "{|den} {-|ENUMERATION} {|Titel|Film} {|bitte}",
   ]
 }, function (request, response) {
   const menu = menuFactory(request);
@@ -175,30 +177,35 @@ app.intent("ChooseIntent", {
       case "erster":
       case "erstens":
       case "eins":
+      case "ersten":
         sayMovie.rating(new Movie(moviesSession[0]));
         break;
 
       case "zweiter":
       case "zweitens":
       case "zwei":
+      case "zweiten":
         sayMovie.rating(new Movie(moviesSession[1]));
         break;
 
       case "dritter":
       case "drittens":
       case "drei":
+      case "dritten":
         sayMovie.rating(new Movie(moviesSession[2]));
         break;
 
       case "vieter":
       case "viertens":
       case "vier":
+      case "vierten":
         sayMovie.rating(new Movie(moviesSession[3]));
         break;
 
       case "fünfter":
       case "fünftens":
       case "fünf":
+      case "fünften":
         sayMovie.rating(new Movie(moviesSession[4]));
         break;
 
