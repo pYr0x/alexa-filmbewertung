@@ -25,7 +25,7 @@ class SayMovie {
 
     this.imdbMenu.inMenue('movieRating');
     this.response.response.MENU_TEST = this.imdbMenu.getCurrentMenu();
-    this.response.shouldEndSession(true);
+    return this.response.shouldEndSession(true);
   }
 
   list(movies){
@@ -38,10 +38,10 @@ class SayMovie {
     this.response.say("Ich habe mehrere Filme mit dem Titel: "+this.searchedForMovie+" gefunden. Welchen Film hast du gemeint? "+sayList.join('. ')+". Sage zum Beispiel: Erster Titel.");
     this.response.reprompt("Ich hab leider nichts gehört. Sage zum Beispiel: Erster Titel.");
 
-    this.response.shouldEndSession(false);
-
     this.imdbMenu.inMenue('movieList');
     this.response.response.MENU_TEST = this.imdbMenu.getCurrentMenu();
+
+    return this.response.shouldEndSession(false);
   }
 
 }

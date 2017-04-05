@@ -230,7 +230,7 @@ app.intent("ChooseIntent", {
         break;
     }
 
-    if(userHasChoosen !== false && response.response.shouldEndSession === undefined){
+    if(userHasChoosen !== false && response.response.response.shouldEndSession === undefined){
       // const help = Menu.menues[menu.getCurrentMenu()].help;
       response.say("Ich konnte den "+ userHasChoosen +" Titel nicht finden. Bitte wähle einen anderen Film aus.").shouldEndSession(false);
     }
