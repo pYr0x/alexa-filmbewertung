@@ -171,6 +171,7 @@ app.intent("ChooseIntent", {
   let moviesSession = request.getSession().get(CONST.IMDB_SESSION_KEY+"movies");
 
   let userHasChoosen = false;
+  let movieFound = false;
 
   if(moviesSession && moviesSession.length > 0){
     console.log(enumeration);
@@ -182,6 +183,7 @@ app.intent("ChooseIntent", {
       case "ersten":
         sayMovie.rating(new Movie(moviesSession[0]));
         userHasChoosen = "ersten";
+        movieFound = true;
         break;
 
       case "zweiter":
@@ -190,6 +192,7 @@ app.intent("ChooseIntent", {
       case "zweiten":
         if(moviesSession.length >= 2){
           sayMovie.rating(new Movie(moviesSession[1]));
+          movieFound = true;
         }
         userHasChoosen = "zweiten";
         break;
@@ -200,6 +203,7 @@ app.intent("ChooseIntent", {
       case "dritten":
         if(moviesSession.length >= 3) {
           sayMovie.rating(new Movie(moviesSession[2]));
+          movieFound = true;
         }
         userHasChoosen = "dritten";
         break;
@@ -210,6 +214,7 @@ app.intent("ChooseIntent", {
       case "vierten":
         if(moviesSession.length >= 4) {
           sayMovie.rating(new Movie(moviesSession[3]));
+          movieFound = true;
         }
         userHasChoosen = "vierten";
         break;
@@ -220,6 +225,7 @@ app.intent("ChooseIntent", {
       case "fünften":
         if(moviesSession.length >= 5) {
           sayMovie.rating(new Movie(moviesSession[4]));
+          movieFound = true;
         }
         userHasChoosen = "fünften";
         break;
@@ -230,7 +236,7 @@ app.intent("ChooseIntent", {
         break;
     }
 
-    if(userHasChoosen !== false && response.response.response.shouldEndSession === undefined){
+    if(userHasChoosen !== false && !movieFound){
       // const help = Menu.menues[menu.getCurrentMenu()].help;
       response.say("Ich konnte den "+ userHasChoosen +" Titel nicht finden. Bitte wähle einen anderen Film aus.").shouldEndSession(false);
     }
