@@ -66,7 +66,7 @@ app.intent("SearchIntent", {
     let session = request.getSession();
 
 
-		const searchedForMovie = request.slot("MOVIE");
+		const searchedForMovie = Movie.normalize(request.slot("MOVIE"));
 		const searchedForYear = request.slot("YEAR");
 		console.log("movie: "+searchedForMovie);
 		console.log("year: "+searchedForYear);
@@ -170,6 +170,8 @@ app.intent("ChooseIntent", {
 
   let moviesSession = request.getSession().get(CONST.IMDB_SESSION_KEY+"movies");
 
+  let userHasChoosen = false;
+
   if(moviesSession && moviesSession.length > 0){
     console.log(enumeration);
 
@@ -179,40 +181,58 @@ app.intent("ChooseIntent", {
       case "eins":
       case "ersten":
         sayMovie.rating(new Movie(moviesSession[0]));
+        userHasChoosen = "ersten";
         break;
 
       case "zweiter":
       case "zweitens":
       case "zwei":
       case "zweiten":
-        sayMovie.rating(new Movie(moviesSession[1]));
+        if(moviesSession.length >= 2){
+          sayMovie.rating(new Movie(moviesSession[1]));
+        }
+        userHasChoosen = "zweiten";
         break;
 
       case "dritter":
       case "drittens":
       case "drei":
       case "dritten":
-        sayMovie.rating(new Movie(moviesSession[2]));
+        if(moviesSession.length >= 3) {
+          sayMovie.rating(new Movie(moviesSession[2]));
+        }
+        userHasChoosen = "dritten";
         break;
 
-      case "vieter":
+      case "vierter":
       case "viertens":
       case "vier":
       case "vierten":
-        sayMovie.rating(new Movie(moviesSession[3]));
+        if(moviesSession.length >= 4) {
+          sayMovie.rating(new Movie(moviesSession[3]));
+        }
+        userHasChoosen = "vierten";
         break;
 
       case "fünfter":
       case "fünftens":
       case "fünf":
       case "fünften":
-        sayMovie.rating(new Movie(moviesSession[4]));
+        if(moviesSession.length >= 5) {
+          sayMovie.rating(new Movie(moviesSession[4]));
+        }
+        userHasChoosen = "fünften";
         break;
 
       default:
-        response.say(Menu.menues[menu.getCurrentMenu()]);
-        response.shouldEndSession(false);
+        const help = Menu.menues[menu.getCurrentMenu()].help;
+        response.say(help).shouldEndSession(false);
         break;
+    }
+
+    if(userHasChoosen !== false && response.response.shouldEndSession === undefined){
+      // const help = Menu.menues[menu.getCurrentMenu()].help;
+      response.say("Ich konnte den "+ userHasChoosen +" Titel nicht finden. Bitte wähle einen anderen Film aus.").shouldEndSession(false);
     }
   }else{
   	response.say("Nenne mir einen Film und ich sage dir seine Bewertung.");

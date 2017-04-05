@@ -13,13 +13,16 @@ class ImdbScrapper {
     this.year = year;
     this.count = 5;
     this.movies = [];
+
+    this.today = new Date();
   }
 
   _query() {
     let self = this;
 
     this.promise = new Promise((resolve, reject) => {
-      scrapeIt(ImdbScrapper.url + "?api_key="+ process.env.api_key +"&s=tt&ttype=ft&q=" + this.title, {
+      // scrapeIt(ImdbScrapper.url + "?api_key="+ process.env.api_key +"&s=tt&ttype=ft&q=" + this.title, {
+      scrapeIt(ImdbScrapper.url + "?api_key="+ process.env.api_key +"&s=tt&ttype=ft&ref_=fn_ft&q=" + this.title, {
         movies: {
           listItem: "table.findList tr",
           name: "movie",
@@ -71,15 +74,21 @@ class ImdbScrapper {
           // if the year should not have any word character!
           // if year contains any word character do not list in movies!
           if(!(/[a-z]/.test(movieObj.year))){
+            // if the user specify a release year
             if(self.year !== undefined){
               if(parseInt(self.year) === parseInt(movie.releaseYear)){
                 self.movies.push(movie);
+                i = 100; // skip rest
               }
             }else{
-              self.movies.push(movie);
+              // add only movies released this year or in the past
+              if(parseInt(movie.releaseYear) <= self.today.getFullYear()) {
+                self.movies.push(movie);
+                i++;
+              }
             }
           }
-          i++;
+
         });
 
         resolve(self.movies);

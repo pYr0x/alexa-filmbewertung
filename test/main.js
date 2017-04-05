@@ -122,5 +122,36 @@ describe("Alexa", function() {
         done();
       });
     });
+
+    it("choose 'vierter' matrix movie", function (done) {
+      app.request(requestTemplate.matrixStrReplaceError).then(function (response) {
+        assert.equal(response.MENU_TEST, "movieRating");
+        assert.isTrue(!!~response.response.outputSpeech.ssml.indexOf('Der Film: The Matrix Reloaded Revisited'));
+        done();
+      });
+    });
+
+    it("should find a movie with a thrid part", function (done) {
+      app.request(requestTemplate.searchStarWarsEpisode3).then(function (response) {
+        assert.equal(response.MENU_TEST, 'movieList');
+        assert.equal(response.sessionAttributes.imdb_movies.length, 5);
+        done();
+      });
+    });
+
+    it("should find a movie with a second part with more the five results", function (done) {
+      app.request(requestTemplate.searchStarWarsEpisode2).then(function (response) {
+        assert.equal(response.MENU_TEST, 'movieRating');
+        assert.isTrue(!!~response.response.outputSpeech.ssml.indexOf('Der Film: Star Wars: Episode II - Angriff der Klonkrieger, aus dem Jahr 2002 hat'));
+        done();
+      });
+    });
+
+    it("choose a movie number that is not valid", function (done) {
+      app.request(requestTemplate.fifthPart).then(function (response) {
+        assert.isTrue(!!~response.response.outputSpeech.ssml.indexOf('Ich konnte den fünften Titel nicht finden. Bitte wähle einen anderen Film aus.'));
+        done();
+      });
+    });
   });
 });

@@ -1,6 +1,57 @@
 "use strict";
 
 class Movie {
+
+  static normalize(name){
+    const replaceMap = {
+      "eins": "1",
+      "zwei": "2",
+      "drei": "3",
+      "vier": "4",
+      "fünf": "5",
+      "sechs": "6",
+      "sieben": "7",
+      "acht": "8",
+      "neun": "9",
+      "zehn": "10",
+      "elf": "11",
+      "zwölf": "12"
+    };
+
+    for (const key of Object.keys(replaceMap)) {
+      // replace ending numbers
+      name = name.replace(new RegExp("\\s+"+key+"$","g"), " "+replaceMap[key]);
+
+      // replace numbers between spaces
+      name = name.replace(new RegExp("\\s+"+key+"\\s+","g"), " "+replaceMap[key]+" ");
+    }
+
+    const romanCharacters = {
+      "I": "eins",
+      "II": "zwei",
+      "III": "drei",
+      "IV": "vier",
+      "V": "fünf",
+      "VI": "sechs",
+      "VII": "sieben",
+      "VIII": "acht",
+      "IX": "neun",
+      "X": "zehn",
+      "XI": "elf",
+      "XII": "zwölf"
+    };
+
+    for (const key of Object.keys(romanCharacters)) {
+      // replace ending numbers
+      name = name.replace(new RegExp("\\s+"+key+"$","g"), " "+romanCharacters[key]);
+
+      // replace numbers between spaces
+      name = name.replace(new RegExp("\\s+"+key+"\\s+","g"), " "+romanCharacters[key]+" ");
+    }
+
+    return name;
+  }
+
   constructor(json) {
     try {
       this.movie = JSON.parse(json);

@@ -209,7 +209,7 @@ template.searchXXX = {
         "{\"Response\":\"true\",\"Title\":\"John Wick\",\"Year\":\"2014\",\"Id\":\"tt2911666\",\"imdbRating\":\"7.2\"}"
       ],
       "imdb_menu": {
-        "histroy": [
+        "history": [
           {
             "menue": "main"
           },
@@ -401,5 +401,152 @@ template.searchDerPate = {
   "version": "1.0"
 };
 
+template.matrixStrReplaceError = {
+  "session": {
+    "sessionId": "SessionId.a6ddf1d4-3759-4d82-8a62-39b02032dbd6",
+    "application": {
+      "applicationId": "amzn1.ask.skill.81ad5dfb-a077-4bc7-a4ae-85820ebb8a1b"
+    },
+    "attributes": {
+      "imdb_movies": [
+        "{\"Response\":\"true\",\"Title\":\"Matrix\",\"Year\":\"1999\",\"Id\":\"tt0133093\",\"imdbRating\":\"8.7\"}",
+        "{\"Response\":\"true\",\"Title\":\"Matrix Reloaded\",\"Year\":\"2003\",\"Id\":\"tt0234215\",\"imdbRating\":\"7.2\"}",
+        "{\"Response\":\"true\",\"Title\":\"Matrix Revolutions\",\"Year\":\"2003\",\"Id\":\"tt0242653\",\"imdbRating\":\"6.7\"}",
+        "{\"Response\":\"true\",\"Title\":\"The Matrix Reloaded Revisited\",\"Year\":\"2004\",\"Id\":\"tt1830850\",\"imdbRating\":\"6.8\"}",
+        "{\"Response\":\"true\",\"Title\":\"The Matrix Revolutions Revisited\",\"Year\":\"2004\",\"Id\":\"tt1830851\",\"imdbRating\":\"5.8\"}"
+      ]
+    },
+    "user": {
+      "userId": "amzn1.ask.account.AE5B4PL24QQDV7CKJZOQXPEWO7AF7TFYHCVR2LU5TFYLAIJFNNCM32OVNGO5ZZA4QDG7XI2TTMG2E5KDNYYRWSSNYNFRUJECXRYJRJSEP4SCTKY37HG7Z34LTLLBVD5XXYVQYQDIJJFSSLCLR3Y66LKOMQIJEZWLUUHDANWPGN3IXQHDQKOCE47XY7TTNA6AELHZWPSKV2IW56I"
+    },
+    "new": true
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": "EdwRequestId.6e9b83c1-478c-476d-bfb8-c7a19f15fe0a",
+    "locale": "de-DE",
+    "timestamp": "2017-03-22T22:08:35Z",
+    "intent": {
+      "name": "ChooseIntent",
+      "slots": {
+        "ENUMERATION": {
+          "name": "ENUMERATION",
+          "value": "vierter"
+        }
+      }
+    }
+  },
+  "version": "1.0"
+};
+
+template.searchStarWarsEpisode3 = {
+  "session": {
+    "sessionId": "SessionId.fc011c52-413e-460b-b500-147251d266cd",
+    "application": {
+      "applicationId": "amzn1.ask.skill.81ad5dfb-a077-4bc7-a4ae-85820ebb8a1b"
+    },
+    "attributes": {},
+    "user": {
+      "userId": "amzn1.ask.account.AE5B4PL24QQDV7CKJZOQXPEWO7AF7TFYHCVR2LU5TFYLAIJFNNCM32OVNGO5ZZA4QDG7XI2TTMG2E5KDNYYRWSSNYNFRUJECXRYJRJSEP4SCTKY37HG7Z34LTLLBVD5XXYVQYQDIJJFSSLCLR3Y66LKOMQIJEZWLUUHDANWPGN3IXQHDQKOCE47XY7TTNA6AELHZWPSKV2IW56I"
+    },
+    "new": true
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": "EdwRequestId.b37c03b6-b10c-4398-9ea2-1a19bbe5095a",
+    "locale": "de-DE",
+    "timestamp": "2017-03-04T15:58:32Z",
+    "intent": {
+      "name": "SearchIntent",
+      "slots": {
+        "MOVIE": {
+          "name": "MOVIE",
+          "value": "star wars episode drei"
+        }
+      }
+    }
+  },
+  "version": "1.0"
+};
+
+template.searchStarWarsEpisode2 = {
+  "session": {
+    "sessionId": "SessionId.fc011c52-413e-460b-b500-147251d266cd",
+    "application": {
+      "applicationId": "amzn1.ask.skill.81ad5dfb-a077-4bc7-a4ae-85820ebb8a1b"
+    },
+    "attributes": {},
+    "user": {
+      "userId": "amzn1.ask.account.AE5B4PL24QQDV7CKJZOQXPEWO7AF7TFYHCVR2LU5TFYLAIJFNNCM32OVNGO5ZZA4QDG7XI2TTMG2E5KDNYYRWSSNYNFRUJECXRYJRJSEP4SCTKY37HG7Z34LTLLBVD5XXYVQYQDIJJFSSLCLR3Y66LKOMQIJEZWLUUHDANWPGN3IXQHDQKOCE47XY7TTNA6AELHZWPSKV2IW56I"
+    },
+    "new": true
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": "EdwRequestId.b37c03b6-b10c-4398-9ea2-1a19bbe5095a",
+    "locale": "de-DE",
+    "timestamp": "2017-03-04T15:58:32Z",
+    "intent": {
+      "name": "SearchIntent",
+      "slots": {
+        "MOVIE": {
+          "name": "MOVIE",
+          "value": "star wars episode zwei"
+        },
+        "YEAR": {
+          "name": "YEAR",
+          "value": "2002"
+        }
+      }
+    }
+  },
+  "version": "1.0"
+};
+
+template.fifthPart = {
+  "session": {
+    "sessionId": "SessionId.a6ddf1d4-3759-4d82-8a62-39b02032dbd6",
+    "application": {
+      "applicationId": "amzn1.ask.skill.81ad5dfb-a077-4bc7-a4ae-85820ebb8a1b"
+    },
+    "attributes": {
+      "imdb_movies": [
+        "{\"Response\":\"true\",\"Title\":\"Der Herr der Ringe - Die Gefährten\",\"Year\":\"2001\",\"Id\":\"tt0120737\",\"imdbRating\":\"8.8\"}",
+        "{\"Response\":\"true\",\"Title\":\"Der Herr der Ringe - Die Rückkehr des Königs\",\"Year\":\"2003\",\"Id\":\"tt0167260\",\"imdbRating\":\"8.9\"}",
+        "{\"Response\":\"true\",\"Title\":\"Der Herr der Ringe - Die zwei Türme\",\"Year\":\"2002\",\"Id\":\"tt0167261\",\"imdbRating\":\"8.7\"}",
+      ],
+      "imdb_menu": {
+        "history": [
+          {
+            "menue": "main"
+          },
+          {
+            "menue": "movieList"
+          }
+        ]
+      }
+    },
+    "user": {
+      "userId": "amzn1.ask.account.AE5B4PL24QQDV7CKJZOQXPEWO7AF7TFYHCVR2LU5TFYLAIJFNNCM32OVNGO5ZZA4QDG7XI2TTMG2E5KDNYYRWSSNYNFRUJECXRYJRJSEP4SCTKY37HG7Z34LTLLBVD5XXYVQYQDIJJFSSLCLR3Y66LKOMQIJEZWLUUHDANWPGN3IXQHDQKOCE47XY7TTNA6AELHZWPSKV2IW56I"
+    },
+    "new": true
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": "EdwRequestId.6e9b83c1-478c-476d-bfb8-c7a19f15fe0a",
+    "locale": "de-DE",
+    "timestamp": "2017-03-22T22:08:35Z",
+    "intent": {
+      "name": "ChooseIntent",
+      "slots": {
+        "ENUMERATION": {
+          "name": "ENUMERATION",
+          "value": "fünfter"
+        }
+      }
+    }
+  },
+  "version": "1.0"
+};
 
 module.exports = template;

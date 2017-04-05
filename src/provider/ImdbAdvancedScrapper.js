@@ -13,6 +13,8 @@ class ImdbAdvancedScrapper {
     this.year = year;
     this.count = 5;
     this.movies = [];
+
+    this.today = new Date();
   }
 
   _query() {
@@ -53,12 +55,16 @@ class ImdbAdvancedScrapper {
             // if year contains any word character do not list in movies!
             // and if no realeaseYear was found
             if(!(/[a-z]/.test(movieObj.year)) && movie.releaseYear !== undefined){
+              // if the user specify a release year
               if(self.year !== undefined){
                 if(parseInt(self.year) === parseInt(movie.releaseYear)){
                   self.movies.push(movie);
                 }
               }else{
-                self.movies.push(movie);
+                // add only movies released this year or in the past
+                if(parseInt(movie.releaseYear) <= self.today.getFullYear()) {
+                  self.movies.push(movie);
+                }
               }
             }
           });

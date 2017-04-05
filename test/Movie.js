@@ -25,4 +25,20 @@ describe('Movie', function () {
     const movie = new Movie('{"imdbRating": "n/a"}');
     assert.isFalse(movie.rating);
   });
+
+  it('should normalize the name for proper search', function () {
+    assert.equal(Movie.normalize('Robocop eins'), 'Robocop 1');
+    assert.equal(Movie.normalize('eins und  eins macht zwei'), 'eins und 1 macht 2');
+    assert.equal(Movie.normalize('jungfrau mit dreizig'), 'jungfrau mit dreizig');
+    assert.equal(Movie.normalize('Star Wars sieben'), 'Star Wars 7');
+    assert.equal(Movie.normalize('Star Wars sieben die letzten Jedi'), 'Star Wars 7 die letzten Jedi');
+    assert.equal(Movie.normalize('wahreins'), 'wahreins');
+  });
+
+  it('should normalize roman numbers', function () {
+    assert.equal(Movie.normalize('Rocky II'), "Rocky zwei");
+    assert.equal(Movie.normalize('Rocky III - Das Auge des Tigers'), "Rocky drei - Das Auge des Tigers");
+    assert.equal(Movie.normalize('Rocky XI - Das Auge des Tigers'), "Rocky elf - Das Auge des Tigers");
+    assert.equal(Movie.normalize('Rocky IX - Das Auge des Tigers'), "Rocky neun - Das Auge des Tigers");
+  });
 });

@@ -23,8 +23,6 @@ class SayMovie {
       this.response.say("Der Film: " + movie.title + ", hat " + movie.rating + " von 10 Sterne");
     }
 
-    this.response.shouldEndSession(false);
-
     this.imdbMenu.inMenue('movieRating');
     this.response.response.MENU_TEST = this.imdbMenu.getCurrentMenu();
     this.response.shouldEndSession(true);

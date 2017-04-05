@@ -63,7 +63,7 @@ class Menu {
 
   getData(){
     return {
-      histroy: this.history
+      history: this.history
     };
   }
 
