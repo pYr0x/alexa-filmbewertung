@@ -35,10 +35,19 @@ describe('Movie', function () {
     assert.equal(Movie.normalize('wahreins'), 'wahreins');
   });
 
-  it('should normalize roman numbers', function () {
-    assert.equal(Movie.normalize('Rocky II'), "Rocky zwei");
-    assert.equal(Movie.normalize('Rocky III - Das Auge des Tigers'), "Rocky drei - Das Auge des Tigers");
-    assert.equal(Movie.normalize('Rocky XI - Das Auge des Tigers'), "Rocky elf - Das Auge des Tigers");
-    assert.equal(Movie.normalize('Rocky IX - Das Auge des Tigers'), "Rocky neun - Das Auge des Tigers");
+  it('should rename title with roman numbers', function () {
+    let movie = new Movie('{}');
+
+    movie.title = "Rocky II";
+    assert.equal(movie.title, "Rocky zwei");
+
+    movie.title = 'Rocky III - Das Auge des Tigers';
+    assert.equal(movie.title, "Rocky drei - Das Auge des Tigers");
+
+    movie.title = 'Rocky XI - Das Auge des Tigers';
+    assert.equal(movie.title, "Rocky elf - Das Auge des Tigers");
+
+    movie.title = 'Rocky IX - Das Auge des Tigers';
+    assert.equal(movie.title, "Rocky neun - Das Auge des Tigers");
   });
 });

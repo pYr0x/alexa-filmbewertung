@@ -65,7 +65,7 @@ app.intent("SearchIntent", {
 
     let session = request.getSession();
 
-
+    console.log("raw movie: "+request.slot("MOVIE"));
 		const searchedForMovie = Movie.normalize(request.slot("MOVIE"));
 		const searchedForYear = request.slot("YEAR");
 		console.log("movie: "+searchedForMovie);
@@ -76,7 +76,7 @@ app.intent("SearchIntent", {
       const imdbas = new ImdbAdvancedScrapper(searchedForMovie, searchedForYear);
 
       return imdbas.findMovie().then((movies) => {
-        console.log(movies);
+        console.log("ImdbAdvancedScrapper: "+movies);
         resolve(movies);
 
         // if not found with ImdbAdvancedScrapper
@@ -85,7 +85,7 @@ app.intent("SearchIntent", {
         // go ahead and try to find with ImdbScrapper
         const imdbs = new ImdbScrapper(searchedForMovie, searchedForYear);
         imdbs.findMovie().then((movies) => {
-          console.log(movies);
+          console.log("ImdbScrapper: "+movies);
           let omdbPromises = [];
           // loop through all movies and get info about the imdb rating
           movies.forEach((movie, index, object) => {
@@ -107,6 +107,7 @@ app.intent("SearchIntent", {
 
           // if all omdb requests are resolved
           Promise.all(omdbPromises).then(() => {
+            console.log("resloved all OMDB");
             resolve(movies);
           });
         }).catch((err) => {
@@ -118,6 +119,7 @@ app.intent("SearchIntent", {
 
 
     return moviePromise.then(function (movies) {
+      console.log("resolved and say");
       // no movie found
       if(movies.length <= 0) {
         response.say("Ich konnte leider keine Bewertung für den Film: "+searchedForMovie+" finden.");

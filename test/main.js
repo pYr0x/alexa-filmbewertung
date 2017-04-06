@@ -142,7 +142,7 @@ describe("Alexa", function() {
     it("should find a movie with a second part with more the five results", function (done) {
       app.request(requestTemplate.searchStarWarsEpisode2).then(function (response) {
         assert.equal(response.MENU_TEST, 'movieRating');
-        assert.isTrue(!!~response.response.outputSpeech.ssml.indexOf('Der Film: Star Wars: Episode II - Angriff der Klonkrieger, aus dem Jahr 2002 hat'));
+        assert.isTrue(!!~response.response.outputSpeech.ssml.indexOf('Der Film: Star Wars: Episode 2 - Angriff der Klonkrieger, aus dem Jahr 2002 hat'));
         done();
       });
     });

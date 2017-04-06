@@ -1,5 +1,7 @@
 "use strict";
 
+const _ = require('lodash');
+
 class Movie {
 
   static normalize(name){
@@ -26,36 +28,15 @@ class Movie {
       name = name.replace(new RegExp("\\s+"+key+"\\s+","g"), " "+replaceMap[key]+" ");
     }
 
-    const romanCharacters = {
-      "I": "eins",
-      "II": "zwei",
-      "III": "drei",
-      "IV": "vier",
-      "V": "fünf",
-      "VI": "sechs",
-      "VII": "sieben",
-      "VIII": "acht",
-      "IX": "neun",
-      "X": "zehn",
-      "XI": "elf",
-      "XII": "zwölf"
-    };
-
-    for (const key of Object.keys(romanCharacters)) {
-      // replace ending numbers
-      name = name.replace(new RegExp("\\s+"+key+"$","g"), " "+romanCharacters[key]);
-
-      // replace numbers between spaces
-      name = name.replace(new RegExp("\\s+"+key+"\\s+","g"), " "+romanCharacters[key]+" ");
-    }
-
     return name;
   }
 
   constructor(json) {
     try {
+      
       this.movie = JSON.parse(json);
       this.rating = this.movie.imdbRating;
+      this.title = this.movie.Title;
     }catch (err) {
       throw err;
     }
@@ -96,7 +77,7 @@ class Movie {
   }
 
   set title(value) {
-    this.movie.Title = value;
+    this.movie.Title = _.escape(this._renameTitle(value));
   }
 
   get releaseYear() {
@@ -126,6 +107,32 @@ class Movie {
 
   toJSON(){
     return JSON.stringify(this.movie);
+  }
+
+  _renameTitle(title){
+    const romanCharacters = {
+      "I": "eins",
+      "II": "zwei",
+      "III": "drei",
+      "IV": "vier",
+      "V": "fünf",
+      "VI": "sechs",
+      "VII": "sieben",
+      "VIII": "acht",
+      "IX": "neun",
+      "X": "zehn",
+      "XI": "elf",
+      "XII": "zwölf"
+    };
+
+    for (const key of Object.keys(romanCharacters)) {
+      // replace ending numbers
+      title = title.replace(new RegExp("\\s+"+key+"$","g"), " "+romanCharacters[key]);
+
+      // replace numbers between spaces
+      title = title.replace(new RegExp("\\s+"+key+"\\s+","g"), " "+romanCharacters[key]+" ");
+    }
+    return title;
   }
 }
 
