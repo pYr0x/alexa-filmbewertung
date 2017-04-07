@@ -76,7 +76,8 @@ app.intent("SearchIntent", {
       const imdbas = new ImdbAdvancedScrapper(searchedForMovie, searchedForYear);
 
       return imdbas.findMovie().then((movies) => {
-        console.log("ImdbAdvancedScrapper: "+movies);
+        console.log("ImdbAdvancedScrapper:");
+        console.log(movies);
         resolve(movies);
 
         // if not found with ImdbAdvancedScrapper
@@ -85,7 +86,8 @@ app.intent("SearchIntent", {
         // go ahead and try to find with ImdbScrapper
         const imdbs = new ImdbScrapper(searchedForMovie, searchedForYear);
         imdbs.findMovie().then((movies) => {
-          console.log("ImdbScrapper: "+movies);
+          console.log("ImdbScrapper:");
+          console.log(movies);
           let omdbPromises = [];
           // loop through all movies and get info about the imdb rating
           movies.forEach((movie, index, object) => {

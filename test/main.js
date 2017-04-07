@@ -153,5 +153,12 @@ describe("Alexa", function() {
         done();
       });
     });
+
+    it("should not timeout", function (done) {
+      app.request(requestTemplate.timeout).then(function (response) {
+        assert.isOk(1);
+        done();
+      });
+    });
   });
 });

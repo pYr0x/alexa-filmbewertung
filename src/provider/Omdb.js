@@ -21,17 +21,7 @@ class OMDB {
     this.promise = new Promise((resolve, reject) => {
 
       Request.end((res)  => {
-        let movie;
-        try{
-          movie = new Movie(res.raw_body);
-        }catch (err) {
-          reject('can not parse response');
-        }
-
-        // TEST!
-        // if(this._imdbId === 'tt0120737') {
-        //   reject('movie not found');
-        // }
+        let movie = new Movie(res.raw_body || '{}');
         if(!movie.found()) {
           reject('movie not found');
         }else{
