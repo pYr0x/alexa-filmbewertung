@@ -36,7 +36,9 @@ class Movie {
       
       this.movie = JSON.parse(json);
       this.rating = this.movie.imdbRating;
-      this.title = this.movie.Title;
+      if(this.movie.Title){
+        this.title = this.movie.Title;
+      }
     }catch (err) {
       throw err;
     }
