@@ -5,7 +5,7 @@ const Movie = require('../Movie');
 
 class ImdbScrapper {
   static get url() {
-    return "http://www.alva-boden.de/proxy/imdb.php";
+    return "https://imdb.22-solutions.de/imdb.php";
   }
 
   constructor(title, year){

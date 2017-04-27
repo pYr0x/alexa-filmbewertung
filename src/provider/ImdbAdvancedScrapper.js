@@ -5,7 +5,7 @@ const Movie = require('../Movie');
 
 class ImdbAdvancedScrapper {
   static get url() {
-    return "http://www.alva-boden.de/proxy/imdb-advanced.php";
+    return "https://imdb.22-solutions.de/imdb-advanced.php";
   }
 
   constructor(title, year){
