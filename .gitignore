@@ -45,3 +45,6 @@ typings/
 .yarn-integrity
 .env
 aws.js
+/imdb.zip
+/resources/
+/api-keys.txt

@@ -175,5 +175,12 @@ describe("Alexa", function() {
         done();
       });
     });
+
+    it("should not response movies that are not rated yet", function (done) {
+      app.request(requestTemplate.notRatedYet).then(function (response) {
+        assert.equal(response.response.outputSpeech.ssml, "<speak>Ich konnte leider keine Bewertung für den Film: American Aid finden.</speak>");
+        done();
+      });
+    });
   });
 });

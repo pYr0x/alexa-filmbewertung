@@ -30,4 +30,13 @@ describe('ImdbAdvancedScrapper', () => {
       done();
     });
   });
+
+  it('should not list movies that are not rated yet', function (done) {
+    const imdbs = new ImdbAdvancedScrapper('American Aid', "2006"); // really unknown movie ! ;)
+
+    imdbs.findMovie().catch(function (err) {
+      assert.equal(err, "movie not found");
+      done();
+    });
+  });
 });

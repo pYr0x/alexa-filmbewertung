@@ -51,6 +51,11 @@ class ImdbAdvancedScrapper {
             movie.id = matches[0];
             movie.rating = movieObj.rating;
 
+            // if no rating could be found, ignore!
+            if(movie.rating === false){
+              return;
+            }
+
             // if the year should not have any word character!
             // if year contains any word character do not list in movies!
             // and if no realeaseYear was found
@@ -68,6 +73,7 @@ class ImdbAdvancedScrapper {
               }
             }
           });
+
           if(Array.isArray(self.movies) && self.movies.length > 0){
             resolve(self.movies);
           }else{

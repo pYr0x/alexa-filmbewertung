@@ -615,4 +615,38 @@ template.omdbOutOfService = {
   "version": "1.0"
 };
 
+template.notRatedYet = {
+  "session": {
+    "sessionId": "SessionId.1902a208-5dff-479d-a64a-47809f9ddbb0",
+    "application": {
+      "applicationId": "amzn1.ask.skill.81ad5dfb-a077-4bc7-a4ae-85820ebb8a1b"
+    },
+    "attributes": {},
+    "user": {
+      "userId": "amzn1.ask.account.AE5B4PL24QQDV7CKJZOQXPEWO7AF7TFYHCVR2LU5TFYLAIJFNNCM32OVNGO5ZZA4QDG7XI2TTMG2E5KDNYYRWSSNYNFRUJECXRYJRJSEP4SCTKY37HG7Z34LTLLBVD5XXYVQYQDIJJFSSLCLR3Y66LKOMQIJEZWLUUHDANWPGN3IXQHDQKOCE47XY7TTNA6AELHZWPSKV2IW56I"
+    },
+    "new": true
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": "EdwRequestId.9bd56870-beb3-4e8c-a33b-6f438bb9ee29",
+    "locale": "de-DE",
+    "timestamp": "2017-04-07T21:27:00Z",
+    "intent": {
+      "name": "SearchIntent",
+      "slots": {
+        "MOVIE": {
+          "name": "MOVIE",
+          "value": "American Aid"
+        },
+        "YEAR": {
+          "name": "YEAR",
+          "value": "2006"
+        }
+      }
+    }
+  },
+  "version": "1.0"
+};
+
 module.exports = template;
