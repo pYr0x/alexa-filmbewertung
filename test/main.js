@@ -47,7 +47,7 @@ describe("Alexa", function() {
       });
     });
 
-    it.only('should fall back to ImdbScrapper', function (done) {
+    it('should fall back to ImdbScrapper', function (done) {
       app.request(requestTemplate.searchGermanMovieWithYear).then(function (response) {
         assert(response.response.outputSpeech);
         assert.equal(response.MENU_TEST, 'movieRating');
