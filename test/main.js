@@ -1,18 +1,25 @@
 "use strict";
 const _ = require("lodash");
-var chai = require("chai");
-var assert = chai.assert;
+let chai = require("chai");
+let assert = chai.assert;
 
 
-var requestTemplate = require('./requestTemplate');
+let requestTemplate = require('./requestTemplate');
 
 
 describe("Alexa", function() {
 
-  var app = require('../index');
+  let app = require('../index');
 
   describe("app", function() {
+    const oldOmdbApiKey = process.env.omdbapi_key;
+
     beforeEach(function () {
+
+    });
+
+    afterEach(function () {
+      process.env.omdbapi_key = oldOmdbApiKey;
     });
 
     it('should launch', function (done) {
@@ -162,6 +169,7 @@ describe("Alexa", function() {
     });
 
     it("should work without errors but should not find any movie ratings", function (done) {
+      process.env.omdbapi_key = "foobar";
       app.request(requestTemplate.omdbOutOfService).then(function (response) {
         assert.equal(response.response.outputSpeech.ssml, "<speak>Ich konnte leider keine Bewertung für den Film: sieben jahre in tibet finden.</speak>");
         done();
