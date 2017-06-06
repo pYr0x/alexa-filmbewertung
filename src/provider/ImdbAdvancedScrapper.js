@@ -75,8 +75,8 @@ class ImdbAdvancedScrapper {
           }
         }
       });
-        // .catch(function (err) {
-        // reject(err);
+      //   .catch(function (err) {
+      //   reject(err);
       // });
     });
 

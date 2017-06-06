@@ -15,7 +15,8 @@ class OMDB {
   _query() {
     const Request = unirest.get(OMDB.url)
                            .query({
-                             "i": this._imdbId
+                             "i": this._imdbId,
+                             "apikey": process.env.omdbapi_key
                            });
 
     this.promise = new Promise((resolve, reject) => {

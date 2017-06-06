@@ -89,6 +89,8 @@ app.intent("SearchIntent", {
           console.log("ImdbScrapper:");
           console.log(movies);
           let omdbPromises = [];
+          let ratedMovies = [];
+
           // loop through all movies and get info about the imdb rating
           movies.forEach((movie, index, object) => {
             const omdb = new OMDB(movie.id);
@@ -96,21 +98,19 @@ app.intent("SearchIntent", {
             omdbPromises.push(omdb.findMovie().then(function(OmdbResponse){
               movie.rating = OmdbResponse.rating;
 
-              // when OMDB has no rating for this movie, remove it
-              if(movie.rating === false){
-                object.splice(index, 1);
+              if(movie.rating !== false){
+                ratedMovies.push(movie);
               }
 
             }).catch((err) => {
-              // remove movie which is not found in OMDB
-              object.splice(index, 1);
+
             }));
           });
 
           // if all omdb requests are resolved
           Promise.all(omdbPromises).then(() => {
             console.log("resloved all OMDB");
-            resolve(movies);
+            resolve(ratedMovies);
           });
         }).catch((err) => {
           console.log(err);

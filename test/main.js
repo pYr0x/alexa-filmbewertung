@@ -47,7 +47,7 @@ describe("Alexa", function() {
       });
     });
 
-    it('should fall back to ImdbScrapper', function (done) {
+    it.only('should fall back to ImdbScrapper', function (done) {
       app.request(requestTemplate.searchGermanMovieWithYear).then(function (response) {
         assert(response.response.outputSpeech);
         assert.equal(response.MENU_TEST, 'movieRating');
@@ -157,6 +157,13 @@ describe("Alexa", function() {
     it("should not timeout", function (done) {
       app.request(requestTemplate.timeout).then(function (response) {
         assert.isOk(1);
+        done();
+      });
+    });
+
+    it("should work without errors but should not find any movie ratings", function (done) {
+      app.request(requestTemplate.omdbOutOfService).then(function (response) {
+        assert.equal(response.response.outputSpeech.ssml, "<speak>Ich konnte leider keine Bewertung für den Film: sieben jahre in tibet finden.</speak>");
         done();
       });
     });
